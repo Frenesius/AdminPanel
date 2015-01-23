@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="ui.bootstrap.demo">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PC Builder</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+      <script src="angularscript.js"></script>
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+	background-color: #999999;
+}
+.container .indextxt table tr td p {
+	text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header"></div>
+<div class="menu" align="center"><a href="index.html">
+<img src="images/home.png" onmouseover="this.src='images/home_click.png'" onmouseout="this.src='images/home.png'" width="100" height="50" /><img src="images/LineSeparator.png" width="5" height="50" /></a>
+  <a href="builder.html"><img src="images/Builder.png" onmouseover="this.src='images/builder_click.png'" onmouseout="this.src='images/builder.png'" width="100" height="50"/></a><a href="builder.html"><img src="images/LineSeparator.png" alt="" width="5" height="50" /></a>
+  <a href="about.html"><img src="images/about.png" onmouseover="this.src='images/about_click.png'" onmouseout="this.src='images/about.png'" width="100" height="50"/></a><a href="builder.html"><img src="images/LineSeparator.png" alt="" width="5" height="50" /></a>
+  <a href="contact.html"><img src="images/contact.png" onmouseover="this.src='images/contact_click.png'" onmouseout="this.src='images/contact.png'" width="100" height="50" /></a>
+<a href="builder.html"><img src="images/LineSeparator.png" alt="" width="5" height="50" /></a><a href="admin.html"><img src="images/admin.png" alt="" width="100" height="50" onmouseover="this.src='images/admin_click.png'" onmouseout="this.src='images/admin.png'" /></a></div>
+<div class="container">
+  <p>&nbsp;</p>
+  <p><br />
+</p>
+  <div class="indextxt"></div>
+  <table width="50%" border="0" align="center" cellpadding="20" cellspacing="10">
+    <tr>
+      <td width="51%"><div class='container-fluid' ng-controller="TypeaheadCtrl">
+        <div id="CPU">
+          <h4><img src="images/cpu.png" width="69" height="66" /></h4>
+          <input type="text" ng-model="selected.cpu" placeholder="Kies je Processor" typeahead="cpu as cpu.Product + cpu.Uitvoering for cpu in componentsCPU | filter:$viewValue | limitTo:10" class="form-control" />
+        </div></td>
+    </tr>
+    <tr>
+      <td><div id="GPU2">
+        <h4><img src="images/gpu.png" width="71" height="65" /></h4>
+        <input type="text" ng-model="selected.gpu" placeholder="Kies je Graphics Card" typeahead="gpu as gpu.Product + gpu.Uitvoering for gpu in componentsGPU | filter:$viewValue | limitTo:10" class="form-control" />
+      </div></td>
+    </tr>
+    <tr>
+      <td><div id="GPU3">
+        <h4><img src="images/gpu.png" width="71" height="65" /></h4>
+        <input type="text" ng-model="selected.gpu" placeholder="Kies je Graphics Card" typeahead="gpu as gpu.Product + gpu.Uitvoering for gpu in componentsGPU | filter:$viewValue | limitTo:10" class="form-control" />
+      </div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<div class="footer">
+  <p><br />
+  Website Contents Copyright © 2014 Frenesius PC Builder</p>
+</div>
+
+</body>
+</html>

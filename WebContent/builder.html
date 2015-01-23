@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="ui.bootstrap.demo">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PC Builder</title>
+<script>
+          function disableInput(){
+              document.getElementsByClassName("ng-scope ng-binding").disabled = true;
+
+      }
+      </script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+      <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+      <script src="angularscript.js"></script>
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+     
+<link href="style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+	background-color: #999999;
+}
+</style>
+</head>
+
+<body>
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  </a>
+</script>
+<div class="header"></div>
+<div class="menu" align="center"><a href="index.html">
+<img src="images/home.png" onmouseover="this.src='images/home_click.png'" onmouseout="this.src='images/home.png'" width="100" height="50" /></a>
+<a href="builder.html"><img src="images/Builder.png" onmouseover="this.src='images/builder_click.png'" onmouseout="this.src='images/builder.png'" width="100" height="50"/></a><a href="about.html"><img src="images/about.png" onmouseover="this.src='images/about_click.png'" onmouseout="this.src='images/about.png'" width="100" height="50"/></a><a href="contact.html"><img src="images/contact.png" onmouseover="this.src='images/contact_click.png'" onmouseout="this.src='images/contact.png'" width="100" height="50" /></a><a href="admin.html"><img src="images/admin.png" alt="" width="100" height="50" onmouseover="this.src='images/admin_click.png'" onmouseout="this.src='images/admin.png'" /></a></div>
+<div class="containerbuilder">
+<div class='container-fluid' ng-controller="TypeaheadCtrl">
+  <h5><strong>Build your computer now</strong></h5>
+  <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><img src="images/cpu.png" width="55" height="50" /><br />
+      <br /></td>
+      <td>
+        <div id="CPU">
+		 <input type="text" ng-model="selected.cpu" placeholder="Processor | e.g. Intel Core i7" typeahead="cpu as cpu.Product + cpu.Uitvoering + ' ' + cpu.Verkoopstatus for cpu in componentsCPU | filter:$viewValue | limitTo:20" class="form-control">
+      </p></div></td>
+    </tr>
+    <tr>
+      <td><img src="images/ram.png" width="55" height="50" /><br />
+      <br /></td>
+      <div id="MEMORY">
+      <td>
+   <input type="text" ng-model="selected.memory" placeholder="Memory(RAM) | e.g. Crucial, Corsair" typeahead="memory as memory.Uitvoering + ' ' + memory.Geheugengrootte for memory in componentsMemory | filter:$viewValue | limitTo:10" class="form-control">
+      </p></div></td>
+    </tr>
+    <tr>
+      <td><img src="images/mb.png" width="55" height="50" /><br />
+      <br /></td>
+      <div id="MOTHERBOARD">
+      <td>
+   <input type="text" ng-model="selected.motherboard" placeholder="Motherboard | e.g. ASRock 970 Extreme" typeahead="mb as mb.Product + ' ' + mb.Uitvoering for mb in componentsMotherboard | filter:$viewValue | limitTo:20" class="form-control">
+      </p></div></td>
+    </tr>
+    <tr>
+      <td><img src="images/gpu.png" width="55" height="50" /><br />
+      <br /></td>
+      <td>
+  <input type="text" ng-model="selected.gpu" placeholder="Graphic Card | e.g. GeForce GTX 970" typeahead="gpu as gpu.Product + ' ' + gpu.Uitvoering for gpu in componentsGPU | filter:$viewValue | limitTo:20" class="form-control">
+      </p></td>
+    </tr>
+    <tr>
+      <td><img src="images/psu.png" width="55" height="50" /><br />
+      <br /></td>
+      <td>
+      <div id="POWERSUPPLY">
+	<input type="text" ng-model="selected.powersupply" placeholder="Bijvoorbeeld Samsung of LG" typeahead="psu as psu.Merk + ' ' + psu.Uitvoering + ' ' + psu.Vermogen(watt) for psu in componentsPSU | filter:$viewValue | limitTo:20" class="form-control">
+      </p></div></td>
+    </tr>
+    <tr>
+      <td><img src="images/odrive.png" width="55" height="50" /><br />
+      <br /></td>
+      <td>
+     <div id="OPTICALDRIVE">
+    <input type="text" ng-model="selected.opticaldrive" placeholder="Optical Drive | e.g. Samsung of LG" typeahead="od as od.Product + ' ' + od.Uitvoering for od in componentsOD | filter:$viewValue | limitTo:20" class="form-control">
+      </p></div></td>
+    </tr>
+    <tr>
+      <td><img src="images/ssd.png" width="55" height="50" /><br />
+      <br /></td>
+      <td>
+      <div id="SSD">
+ <input type="text" ng-model="selected.ssd" placeholder="Solid State Drive | e.g. Samsung, Kingston" typeahead="ssd as ssd.Product + ' ' + ssd.Uitvoering + ' ' + ssd.Opslagcapaciteit for ssd in componentsSSD | filter:$viewValue | limitTo:20" class="form-control">
+      </p></div></td>
+    </tr>
+    <tr>
+      <td><img src="images/case.png" width="55" height="50" /><br />
+      <br /></td>
+      <td>
+     <div id="CASE">
+    <input type="text" ng-model="selected.case" placeholder="Case | e.g. Cooler Master, Antec" typeahead="case as case.Merk + ' ' + case.Product for case in componentsCASE | filter:$viewValue | limitTo:20" class="form-control">
+      </p></div></td>
+    </tr>
+  </table>
+  <div class="buttonbuilder">
+  <input type="submit"  ng-click="update(selected)" value="Save">
+  </div>
+  <div class="outputbuilder">
+  <pre>{{computer | json}}</pre>
+  
+  </div>
+ </div>
+</div>
+
+<div class="footer">
+  <p><br />
+  Website Contents Copyright © 2014 Frenesius PC Builder</p>
+</div>
+
+</body>
+</html>
