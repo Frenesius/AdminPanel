@@ -21,7 +21,8 @@ public class GraphManager {
 		MySqlManager mysqlMan = new MySqlManager();
 		ArrayList<Price> price = mysqlMan.getPricesByEan(ean);
 		for(Price p : price){
-			line.addValue(Double.parseDouble(p.getPriceex().replace(",", ".").replace("-", ""))/4, p.getPriceex(), p.getTimestamp());
+			Double pricePrice = Double.parseDouble(p.getPriceex().replace(",", ".").replace("-", ""));
+			line.addValue(pricePrice, p.getEan(), p.getTimestamp());
 		}
 		JFreeChart chart = ChartFactory.createLineChart("Price's", "Time", "Price", line, PlotOrientation.VERTICAL,
 				true,true,false);
@@ -29,7 +30,6 @@ public class GraphManager {
 		try {
 			Date date = new Date();
 			String filename = new Timestamp(date.getTime()).toString().replace(" ", "");
-			System.out.println(filename);
 			File lineChart = new File("/home/j/Charts/"+filename+".png");
 			ChartUtilities.saveChartAsPNG(lineChart, chart, 800, 600);
 			path = lineChart.getAbsolutePath();	
@@ -39,10 +39,4 @@ public class GraphManager {
 		}
 		return path;
 	}
-	
-	
-	
-	
-	
-	
 }

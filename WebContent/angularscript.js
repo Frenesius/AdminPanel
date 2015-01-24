@@ -1,6 +1,11 @@
 
 angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
 angular.module('ui.bootstrap.demo').controller('TypeaheadCtrl', function($scope, $http) {
+	
+        
+        
+	
+	$scope.master = [];
 	$scope.selected = "";
     $http.get("JSON/PROCESSOR.json").then(function(response){
  		$scope.componentsCPU = response.data;
@@ -47,8 +52,22 @@ angular.module('ui.bootstrap.demo').controller('TypeaheadCtrl', function($scope,
     });
 
     $scope.computer = {};
+    
     $scope.update = function(selected) {
-        $scope.computer = angular.copy(selected);
+        $scope.master = angular.toJson(selected);
+        
+        $http({
+        	method: "POST",
+        	url: "/AdminPanel/GenerateGraph.do",
+        	data: $scope.master,
+        	headers:{
+        	"Content-Type" : "application/x-www-form-urlencoded"}
+        	})
+        	.success(function(data,status,headers,config) 
+        			{
+        		$scope.msg = $scope.master;
+        		
+        			});
     };
 
 });

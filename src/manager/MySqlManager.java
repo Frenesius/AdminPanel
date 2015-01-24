@@ -73,8 +73,8 @@ public class MySqlManager {
              Class.forName("com.mysql.jdbc.Driver");  
              conn = DriverManager.getConnection(DATABASE_URL + DATABASE_PRICE, DATABASE_USERNAME, DATABASE_PASSWORD);  
    
-             pst = conn.prepareStatement("select * from hardwareprice where ean=?");  
-             pst.setString(1, ean);
+             pst = conn.prepareStatement("select * from hardwareprice where ean LIKE ?");  
+             pst.setString(1, "%"+ean+"%");
              	
              rs = pst.executeQuery();  
              while(rs.next()){

@@ -1,7 +1,6 @@
 package manager;
 
 import java.util.ArrayList;
-
 import price.Price;
 
 public class main {

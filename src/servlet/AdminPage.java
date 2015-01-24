@@ -34,11 +34,7 @@ public class AdminPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO get EAN
-		response.setContentType("application/json");
-		BufferedReader read = new BufferedReader(new InputStreamReader(request.getInputStream()));
-		String componentJson = read.readLine();
-		System.out.println(componentJson);
+		
 	}
 
 	/**
